@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <h1>
+      Your TO-DO List
+    </h1>
+    <div>
+        <form action="/add/todo" method="POST" >
+            <input name="todo" type="text" id="heading" class="form-control" placeholder="Enter Task"  autocomplete="off"/>
+            <input
+              class=" button-17"
+              type="submit"
+              value="Save Task"
+            />
+
+        </form>
+        <ul>
+            <% todolist.forEach(items =>{ %>
+                <li>
+                  <%=items.task%>
+                  <a href="/delete/todo/<%= items._id %>" class="delete">X</a>
+                  <a
+                  class="fa" 
+                  href="#popup1"
+                  <% id = items._id %>
+                  >
+                  <i style="font-size:30px" class="fa">&#xf040;</i>
+                </a>
+
+                </li>
+           <% }) %>
+        </ul>
+      </div>
+
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>Edit your task</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            <form action="/update/todo/<%= id %>" method="post" >
+              <input name="edit" type="text" id="heading" placeholder="Edit Task"  autocomplete="off" >
+              <input
+                type="submit"
+                value="Save"
+                class="editButton"
+              />
+          </form>
+          </div>
+        </div>
+      </div>
+      
+
+</body>
+</html>
