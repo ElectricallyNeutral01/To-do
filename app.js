@@ -6,12 +6,12 @@ var id;
 
 const history = require("./schema/script")
 
-mongoose.connect("mongodb+srv://shauryakushwah01:Shaurya@01@cluster0.is1tv1r.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect("mongodb://localhost:27017")
 .then(()=>{
     console.log('connected')
 })
 .catch(()=>{
-    console.log('error')
+    console.log('error mongodb')
 })
 
 //middleware

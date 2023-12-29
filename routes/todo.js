@@ -31,10 +31,14 @@ router.get("/delete/todo/:_id", (req,res) => {
 
 
 router.post("/update/todo/:_id",(req,res) => {
-  const newTask = req.popup1.todo;
+  const newTask = req.body.edit;
   console.log(newTask)
   const { _id } = req.params;
   Todo.updateOne({_id}, {$set:{task:newTask}})
+  .then(() => {
+    res.redirect("/");
+  })
+  .catch((err) => console.log(err));
 })
 
 
